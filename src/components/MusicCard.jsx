@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+import { MusicContext } from '../context/MusicContext';
 
 function MusicCard({ music }) {
   const { trackId, trackName, previewUrl } = music;
   const [loading, setLoading] = useState(false);
   const [favorited, setFavorited] = useState(false);
 
+  const { favoriteMusics } = useContext(MusicContext);
+
   useEffect(() => {
     const getFavoritedSongs = async () => {
-      const favorites = await getFavoriteSongs();
-      if (favorites.length > 0) {
-        setFavorited(favorites.find((favorite) => favorite.trackId === trackId));
+      if (favoriteMusics.length > 0) {
+        setFavorited(favoriteMusics.find((favorite) => favorite.trackId === trackId));
       }
     };
     getFavoritedSongs();
-  }, [trackId]);
+  }, [trackId, favoriteMusics]);
 
   const handleChange = async () => {
     setLoading(true);
+
     if (favorited) {
       await removeSong(music);
     } else {
       await addSong(music);
     }
+
     setFavorited(!favorited);
     setLoading(false);
   };
