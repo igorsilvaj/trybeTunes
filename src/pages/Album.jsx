@@ -40,7 +40,10 @@ export default function Album() {
             {
               musics.length > 0 && (
                 musics.map((music) => (
-                  <MusicCard key={ music.trackId } music={ music } />
+                  <MusicCard
+                    key={ music.trackId }
+                    music={ music }
+                  />
                 )))
             }
           </div>

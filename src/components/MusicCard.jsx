@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 function MusicCard({ music }) {
   const { trackId, trackName, previewUrl } = music;
   const [loading, setLoading] = useState(false);
+  const [favorited, setFavorited] = useState(false);
+
+  useEffect(() => {
+    const getFavoritedSongs = async () => {
+      const favorites = await getFavoriteSongs();
+      if (favorites.length > 0) {
+        setFavorited(favorites.find((favorite) => favorite.trackId === trackId));
+      }
+    };
+    getFavoritedSongs();
+  }, [trackId]);
 
   const handleChange = async () => {
     setLoading(true);
     await addSong(music);
+    setFavorited(!favorited);
     setLoading(false);
   };
 
@@ -25,6 +37,7 @@ function MusicCard({ music }) {
         type="checkbox"
         data-testid={ `checkbox-music-${trackId}` }
         onChange={ handleChange }
+        checked={ favorited }
       />
     </div>
   );
