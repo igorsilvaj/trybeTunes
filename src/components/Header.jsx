@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
-import { Loading } from '.';
+import Loading from './Loading';
 import logo from '../assets/logo-trybetunes.png';
 
 export default function Header() {
