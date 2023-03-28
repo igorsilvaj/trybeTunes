@@ -8,7 +8,7 @@ function AlbumCard({ collectionId, artworkUrl100, collectionName, artistName }) 
       to={ `/album/${collectionId}` }
       data-testid={ `link-to-album-${collectionId}` }
     >
-      <img src={ artworkUrl100 } alt="album thumb" />
+      <img src={ artworkUrl100 } alt="album artwork" />
       <p>{collectionName}</p>
       <p>{artistName}</p>
     </Link>
