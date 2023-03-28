@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 function MusicCard({ music }) {
@@ -20,7 +20,11 @@ function MusicCard({ music }) {
 
   const handleChange = async () => {
     setLoading(true);
-    await addSong(music);
+    if (favorited) {
+      await removeSong(music);
+    } else {
+      await addSong(music);
+    }
     setFavorited(!favorited);
     setLoading(false);
   };
