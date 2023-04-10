@@ -6,7 +6,7 @@ import { Login, Search, Album, Favorites, Profile,
 export default function App() {
   return (
     <Switch>
-      <Route exact path="/" basename="/login" component={ Login } />
+      <Route exact path="/" basename="/trybeTunes" component={ Login } />
       <Route exact path="/search" component={ Search } />
       <Route exact path="/album/:id" component={ Album } />
       <Route exact path="/favorites" component={ Favorites } />
