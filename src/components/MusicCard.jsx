@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
-import Loading from './Loading';
 import { MusicContext } from '../context/MusicContext';
+import fullHeart from '../assets/fullHeart.png';
+import hollowHeart from '../assets/hollowHeart.png';
+import InlineLoading from './InlineLoading';
 
 function MusicCard({ music }) {
   const { trackId, trackName, previewUrl } = music;
@@ -34,19 +36,40 @@ function MusicCard({ music }) {
   };
 
   return (
-    <div>
-      {loading && <Loading />}
-      <div>{trackName}</div>
-      <audio data-testid="audio-component" src={ previewUrl } controls>
+    <div
+      className="flex items-center
+      border-b-2 p-2
+      sm:w-full sm:justify-center
+      md:w-[650px] md:justify-center"
+    >
+      <div className="w-48 truncate">{trackName}</div>
+      <audio
+        className="bg-white rounded-full"
+        data-testid="audio-component"
+        src={ previewUrl }
+        controls
+      >
         <track kind="captions" />
         O seu navegador não suporta o elemento.
       </audio>
-      <input
-        type="checkbox"
-        data-testid={ `checkbox-music-${trackId}` }
-        onChange={ handleChange }
-        checked={ favorited }
-      />
+      <label htmlFor={ `like${trackId}` }>
+        <input
+          className="hidden peer"
+          type="checkbox"
+          id={ `like${trackId}` }
+          data-testid={ `checkbox-music-${trackId}` }
+          onChange={ handleChange }
+          checked={ favorited }
+        />
+        {loading
+          ? <InlineLoading />
+          : (
+            <div
+              className="block w-5 h-5 bg-center bg-contain bg-no-repeat"
+              style={ { backgroundImage: `url(${favorited ? fullHeart : hollowHeart})` } }
+            />
+          )}
+      </label>
     </div>
   );
 }
