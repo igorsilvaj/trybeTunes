@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  trybetunes:
+    image: trybetunes
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: front-end
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
+      - ./tailwind.config.js:/app/tailwind.config.js
+    stdin_open: true
+    tty: true
