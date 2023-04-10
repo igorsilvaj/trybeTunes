@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Header, InlineLoading } from '../components';
+import { Header, Loading } from '../components';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 
@@ -29,7 +29,7 @@ export default function Album() {
       data-testid="page-album"
     >
       <Header />
-      {loading && <InlineLoading />}
+      {loading && <Loading />}
       {album && (
         <section className="flex flex-col md:w-3/4">
           <div
