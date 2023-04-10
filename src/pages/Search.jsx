@@ -83,8 +83,11 @@ export default function Search() {
           <div>Nenhum álbum foi encontrado</div>) }
         { albums !== null && albums.length > 0 && (
           <section className="sm:h-2/4 md:h-3/4">
-            <div className="flex flex-row justify-center items-center h-28">
-              <h2 className="text-[#003BE5] italic font-light text-xl">
+            <div
+              className="flex flex-row justify-center items-center
+              h-28 w-full"
+            >
+              <h2 className="text-[#003BE5] italic font-light text-xl w-2/3 text-center">
                 Resultado de álbuns de:
                 {' '}
                 {saveArtist}
