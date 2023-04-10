@@ -1,13 +1,26 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+<div>
+  <h1>Trybetunes</h1>
+  <p>
+    <a href="https://igorsilvaj.github.io/trybetunes">Demonstração</a>
+    ·
+    <a href="https://github.com/igorsilvaj/trybetunes/issues">Reporte um Bug</a>
+  </p>
+</div>
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+## Sobre o projeto
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+Desenvolvido durante o curso de Front-end da Trybe.
+
+Esta aplicação consegue buscar álbuns que estão disponíveis no Itunes, podendo abrir o álbum e escutar trechos das músicas, adicionar músicas à lista de favoritos e personalizar perfil do usuário.
+
+Site criado com foco na biblioteca React, sendo uma SPA com rotas fornecidas pelo React Router.
+
+Experimentei utilizar o framework Tailwind pela primeira vez neste projeto, realizei a estilização com o conceito de mobile first tentando deixar o site o mais responsivo possível.
+
+<br />
+
+## Mobile
+<img src='./src/assets/mobile.png' width='300px'>
+
+## Desktop
+<img src='./src/assets/pc.png' width='700px'>
